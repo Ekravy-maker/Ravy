@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Petit Français | FLE A1.1</title>
+
+<style>
+:root {
+  --yellow: #FFCF56;
+  --coral: #FF8066;
+  --turquoise: #5CBCC5;
+  --cream: #F8F4E9;
+  --navy: #253A53;
+  --white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.hero {
+  padding: 75px 20px;
+  text-align: center;
+  background: var(--yellow);
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--coral);
+  color: white;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+section {
+  padding: 50px 7%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px #253A5315;
+  text-align: center;
+}
+
+.card .emoji {
+  font-size: 42px;
+}
+
+.card h3 {
+  margin: 12px 0;
+}
+
+.card p {
+  margin-bottom: 18px;
+}
+
+.card button {
+  background: var(--turquoise);
+  color: var(--navy);
+}
+
+.lesson {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.lesson h3 {
+  margin-bottom: 15px;
+}
+
+.lesson p {
+  margin: 10px 0;
+}
+
+.quiz {
+  background: var(--yellow);
+  padding: 30px;
+  border-radius: 18px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.quiz button {
+  margin: 8px 5px;
+}
+
+#result {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+footer {
+  text-align: center;
+  background: var(--navy);
+  color: white;
+  padding: 25px;
+}
+
+@media(max-width:600px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌸 Mon Petit Français</div>
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#cours">Mes cours</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#assistant">Assistant</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="accueil">
+  <h1>Bienvenue dans mon espace FLE ! 🇫🇷</h1>
+  <p>Apprenons le français ensemble, pas à pas !</p>
+  <a href="#cours" class="btn">Commencer à apprendre</a>
+</section>
+
+<section id="cours">
+  <h2 class="section-title">📚 Mes quatre rubriques</h2>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="emoji">👋</div>
+      <h3>1. J'apprends le français</h3>
+      <p>Bonjour, salutations et présentations.</p>
+      <button class="btn" onclick="showLesson('bonjour')">
+        Découvrir
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="emoji">🔤</div>
+      <h3>2. Mon vocabulaire</h3>
+      <p>Les nombres, les couleurs et la famille.</p>
+      <button class="btn" onclick="showLesson('vocabulaire')">
+        Découvrir
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="emoji">✏️</div>
+      <h3>3. Ma grammaire</h3>
+      <p>Les pronoms et les verbes être et avoir.</p>
+      <button class="btn" onclick="showLesson('grammaire')">
+        Découvrir
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="emoji">🎯</div>
+      <h3>4. Je m'entraîne</h3>
+      <p>Des exercices pour tester mes connaissances.</p>
+      <a href="#quiz" class="btn">Faire un quiz</a>
+    </article>
+
+  </div>
+</section>
+
+<section id="lecon">
+  <h2 class="section-title">📖 Ma petite leçon</h2>
+  <div class="lesson" id="lessonContent">
+    <h3>Bienvenue !</h3>
+    <p>Choisis une rubrique pour découvrir une leçon.</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2 class="section-title">🎮 Mon premier quiz</h2>
+
+  <div class="quiz">
+    <h3>Comment dit-on « Hello » en français ?</h3>
+
+    <button class="btn" onclick="checkAnswer('a')">
+      A. Bonjour
+    </button>
+
+    <button class="btn" onclick="checkAnswer('b')">
+      B. Merci
+    </button>
+
+    <button class="btn" onclick="checkAnswer('c')">
+      C. Au revoir
+    </button>
+
+    <p id="result" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="assistant">
+  <h2 class="section-title">🤖 Mon Assistant FLE</h2>
+
+  <div class="lesson">
+    <h3>Besoin d'aide en français ?</h3>
+    <p>
+      Ton assistant pédagogique sera bientôt disponible
+      pour expliquer les leçons, proposer des exercices
+      et t'aider à progresser.
+    </p>
+    <p>🌟 Continue à apprendre le français chaque jour !</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 Mon Petit Français | Apprendre le français avec plaisir ❤️</p>
+  <p>Niveau A1.1 – Français langue étrangère</p>
+</footer>
+
+<script>
+function showLesson(type) {
+  const content = document.getElementById("lessonContent");
+
+  const lessons = {
+    bonjour: `
+      <h3>👋 Les salutations</h3>
+      <p>Bonjour = សួស្តី</p>
+      <p>Bonsoir = សួស្តីពេលល្ងាច</p>
+      <p>Salut = សួស្តី (មិត្តភក្តិ)</p>
+      <p>Au revoir = លាហើយ</p>
+      <p>Merci = អរគុណ</p>
+      <p><strong>À toi de parler :</strong> Bonjour ! Comment tu t'appelles ?</p>
+    `,
+
+    vocabulaire: `
+      <h3>🔤 Les nombres de 1 à 5</h3>
+      <p>1 = Un</p>
+      <p>2 = Deux</p>
+      <p>3 = Trois</p>
+      <p>4 = Quatre</p>
+      <p>5 = Cinq</p>
+      <p>Répète les nombres à voix haute !</p>
+    `,
+
+    grammaire: `
+      <h3>✏️ Le verbe ÊTRE</h3>
+      <p>Je suis</p>
+      <p>Tu es</p>
+      <p>Il / Elle est</p>
+      <p>Nous sommes</p>
+      <p>Vous êtes</p>
+      <p>Ils / Elles sont</p>
+      <p><strong>Exemple :</strong> Je suis étudiant.</p>
+    `
+  };
+
+  content.innerHTML = lessons[type];
+  document.getElementById("lecon").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function checkAnswer(answer) {
+  const result = document.getElementById("result");
+
+  if (answer === "a") {
+    result.textContent = "🎉 Bravo ! Bonne réponse !";
+    result.style.color = "#176B42";
+  } else {
+    result.textContent = "❌ Essaie encore ! Tu peux y arriver.";
+    result.style.color = "#9B2C2C";
+  }
+}
+</script>
+
+</body>
+</html>
